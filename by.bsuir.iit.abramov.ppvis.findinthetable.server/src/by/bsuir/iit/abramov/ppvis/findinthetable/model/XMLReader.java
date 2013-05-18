@@ -15,9 +15,9 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import by.bsuir.iit.abramov.ppvis.findinthetable.util.Util;
-import by.bsuir.iit.abramov.ppvis.findinthetable.view.Desktop;
-import by.bsuir.iit.abramov.ppvis.findinthetable.view.Window;
+import by.bsuir.iit.abramov.ppvis.findinthetable.server.util.Util;
+import by.bsuir.iit.abramov.ppvis.findinthetable.server.view.Desktop;
+import by.bsuir.iit.abramov.ppvis.findinthetable.server.view.Window;
 
 class XMLReader {
 
@@ -31,7 +31,6 @@ class XMLReader {
 		final Document doc = parseForDOM(file);
 		final List<Student> students = parse(doc);
 		model.setStudents(students);
-		model.update();
 	}
 
 	private List<Student> parse(final Document doc) {
@@ -98,7 +97,7 @@ class XMLReader {
 		} catch (Exception e) {
 			XMLReader.LOG.log(
 					Level.SEVERE,
-					Window.geti18nString(XMLReader.PROBLEM_PARSING_THE_FILE)
+					XMLReader.PROBLEM_PARSING_THE_FILE
 							+ e.getMessage(), e);
 			e = null;
 			return null;

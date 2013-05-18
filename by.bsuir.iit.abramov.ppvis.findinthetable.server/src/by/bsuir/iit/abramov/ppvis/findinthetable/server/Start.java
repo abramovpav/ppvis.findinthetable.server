@@ -1,9 +1,9 @@
-package by.bsuir.iit.abramov.ppvis.findinthetable;
+package by.bsuir.iit.abramov.ppvis.findinthetable.server;
 
 import java.io.IOException;
 import java.util.logging.LogManager;
 
-import by.bsuir.iit.abramov.ppvis.findinthetable.view.Window;
+import by.bsuir.iit.abramov.ppvis.findinthetable.server.view.Window;
 
 public class Start {
 

@@ -1,61 +1,46 @@
 package by.bsuir.iit.abramov.ppvis.findinthetable.model;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 import java.util.logging.Logger;
 
-import javax.swing.JTextField;
-
-import by.bsuir.iit.abramov.ppvis.findinthetable.controller.Controller;
-import by.bsuir.iit.abramov.ppvis.findinthetable.util.Util;
+import by.bsuir.iit.abramov.ppvis.findinthetable.server.util.Util;
 
 public class Model {
 
-	public static final String		PROBLEM_PARSING_THE_FILE			= "problem_parsing_the_file";
-	public static final String		ERROR_ERROR_IN_CREATING_DOC			= "error_in_creating_doc";
-	public static final String		ERROR_INCORRECT_QUANTITY_IN_EXAMS	= "error_incorrect_quantity";
-	public final static String		FIELD_MARK							= "mark";
-	public static final String		FIELD_STUDENTS						= "students";
-	public static final String		FIELD_STUDENT						= "student";
-	public static final String		FIELD_EXAM							= "exam";
-	public static final String		FIELD_EXAMS							= "exams";
-	public static final String		FIELD_GROUP							= "group";
-	public static final String		FIELD_NAME							= "name";
-	private static final String		ERROR_FILE_INCORRECT				= "error_file_incorrect";
-	private static Logger			LOG									= Logger.getLogger(Model.class
-																				.getName());
-	private final List<Student>		students;
-	private JTextField				observer;
-	private JTextField				maxObserver;
-	private final List<Controller>	observers;
-	public static final int			DEFAULT_VIEWSIZE					= 10;
-	private Integer					viewSize							= Model.DEFAULT_VIEWSIZE;
-	private int						currPage							= -1;
+	public static final String	PROBLEM_PARSING_THE_FILE			= "problem_parsing_the_file";
+	public static final String	ERROR_ERROR_IN_CREATING_DOC			= "error_in_creating_doc";
+	public static final String	ERROR_INCORRECT_QUANTITY_IN_EXAMS	= "error_incorrect_quantity";
+	public final static String	FIELD_MARK							= "mark";
+	public static final String	FIELD_STUDENTS						= "students";
+	public static final String	FIELD_STUDENT						= "student";
+	public static final String	FIELD_EXAM							= "exam";
+	public static final String	FIELD_EXAMS							= "exams";
+	public static final String	FIELD_GROUP							= "group";
+	public static final String	FIELD_NAME							= "name";
+	private static final String	ERROR_FILE_INCORRECT				= "error_file_incorrect";
+	private static Logger		LOG									= Logger.getLogger(Model.class
+																			.getName());
+	private final List<Student>	students;
+	public static final int		DEFAULT_VIEWSIZE					= 10;
+	private Integer				viewSize							= Model.DEFAULT_VIEWSIZE;
+	private int					currPage							= -1;
 
 	public Model() {
 
 		students = new Vector<Student>();
-		observers = new ArrayList<Controller>();
 	}
 
-	public void addObserver(final Controller observer) {
-
-		if (!observers.contains(observer)) {
-			observers.add(observer);
-		}
-	}
-
+	
 	public void addStudent(final Student student) {
 
 		if (student != null) {
 			students.add(student);
 		}
-		notifyMaxObserver();
 	}
 
+	
 	public void deleteStudents(final List<Student> delStudents) {
 
 		for (final Student student : delStudents) {
@@ -63,8 +48,6 @@ public class Model {
 				students.remove(student);
 			}
 		}
-		notifyMaxObserver();
-		update();
 	}
 
 	private final int getCurrPage() {
@@ -72,6 +55,7 @@ public class Model {
 		return currPage;
 	}
 
+	
 	public final List<Student> getCurrPageOfStudent() {
 
 		if (getCurrPage() < 0) {
@@ -90,6 +74,7 @@ public class Model {
 		return result;
 	}
 
+	
 	public List<Student> getNextPageOfStudents() {
 
 		leafNext();
@@ -117,17 +102,20 @@ public class Model {
 		return pageStudents;
 	}
 
+	
 	public List<Student> getPrevPageOfStudents() {
 
 		leafPrev();
 		return getPageOfStudents();
 	}
 
+	
 	public int getStudentsCount() {
 
 		return students.size();
 	}
 
+	
 	public final Integer getViewSize() {
 
 		return viewSize;
@@ -138,6 +126,7 @@ public class Model {
 		return max % 2 != 0 && max % 2 != 1;
 	}
 
+	
 	public void leafNext() {
 
 		if (currPage < getMaxPage() - 1) {
@@ -145,6 +134,7 @@ public class Model {
 		}
 	}
 
+	
 	public void leafPrev() {
 
 		if (currPage > 0) {
@@ -152,21 +142,7 @@ public class Model {
 		}
 	}
 
-	private void notifyMaxObserver() {
-
-		if (maxObserver != null) {
-			maxObserver.setText(Integer.toString(students.size()));
-		}
-	}
-
-	private void notifyObserver() {
-
-		if (observer != null) {
-			observer.setText(Integer.toString(viewSize));
-		}
-
-	}
-
+	
 	public void openXML(final File file) {
 
 		final XMLReader reader = new XMLReader();
@@ -174,29 +150,19 @@ public class Model {
 
 	}
 
-	public void removeObserver() {
-
-		observer = null;
-	}
-
-	public void removeObserver(final Controller observer) {
-
-		if (observers.contains(observer)) {
-			observers.remove(observer);
-		}
-	}
-
 	private void resetCurrPage() {
 
 		currPage = 0;
 	}
 
+	
 	public void saveXML(final File file) {
 
 		final XMLWriter xmlWriter = new XMLWriter();
 		xmlWriter.saveXML(file, students);
 	}
 
+	
 	public Vector<Student> search(final String name, final Integer group) {
 
 		final Vector<Student> studentsVector = new Vector<Student>();
@@ -214,6 +180,7 @@ public class Model {
 		return studentsVector;
 	}
 
+	
 	public Vector<Student> search(final String name, final String botStr,
 			final String topStr) {
 
@@ -230,6 +197,7 @@ public class Model {
 		return studentsVector;
 	}
 
+	
 	public Vector<Student> search(final String name, final String examStr,
 			final String botStr, final String topStr) {
 
@@ -246,39 +214,21 @@ public class Model {
 		return studentsVector;
 	}
 
-	public void setMaxObserver(final JTextField observer) {
-
-		maxObserver = observer;
-	}
-
-	public void setObserver(final JTextField observer) {
-
-		this.observer = observer;
-	}
-
+	
 	public void setStudents(final List<Student> students) {
 
 		this.students.clear();
 		this.students.addAll(students);
-		notifyMaxObserver();
+
 	}
 
+	
 	public void setViewSize(final Integer viewSize) {
 
 		if (viewSize != null) {
 			if (viewSize > 0) {
 				this.viewSize = viewSize;
-				notifyObserver();
 			}
 		}
-	}
-
-	public void update() {
-
-		final Iterator<Controller> iterator = observers.iterator();
-		while (iterator.hasNext()) {
-			iterator.next().update();
-		}
-
 	}
 }
