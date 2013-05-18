@@ -272,5 +272,6 @@ public class Server {
 		} catch (final IOException e) {
 			System.out.println("class Server.read. can't close stream");
 		}
+		read();
 	}
 }
