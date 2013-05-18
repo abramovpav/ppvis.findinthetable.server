@@ -2,16 +2,11 @@ package by.bsuir.iit.abramov.ppvis.findinthetable.server.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.io.File;
-import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-
-import by.bsuir.iit.abramov.ppvis.findinthetable.model.Student;
 
 public class ContentPane extends JPanel {
 	private static final String	ABOUT_AUTHOR	= "about_author";
@@ -27,7 +22,7 @@ public class ContentPane extends JPanel {
 
 	public void about() {
 
-		JOptionPane.showMessageDialog(null,	ContentPane.ABOUT_AUTHOR,
+		JOptionPane.showMessageDialog(null, ContentPane.ABOUT_AUTHOR,
 				ContentPane.ABOUT_TITLE, JOptionPane.INFORMATION_MESSAGE);
 	}
 

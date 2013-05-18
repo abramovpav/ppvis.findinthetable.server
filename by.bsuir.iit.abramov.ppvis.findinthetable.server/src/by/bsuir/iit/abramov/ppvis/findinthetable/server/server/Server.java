@@ -1,5 +1,6 @@
 package by.bsuir.iit.abramov.ppvis.findinthetable.server.server;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
+import by.bsuir.iit.abramov.ppvis.findinthetable.model.Files;
 import by.bsuir.iit.abramov.ppvis.findinthetable.model.Model;
 import by.bsuir.iit.abramov.ppvis.findinthetable.model.Student;
 import by.bsuir.iit.abramov.ppvis.findinthetable.utiilNetClasses.Mode;
@@ -68,13 +70,11 @@ public class Server {
 		Integer viewSize;
 		String name, topStr, botStr;
 		Integer group;
-		
 
 		while (true) {
 			try {
 				obj = ois.readObject();
 				if (obj != null) {
-					System.out.println(obj.getClass());
 					if (obj.getClass() == Package.class) {
 						final Package pack = (Package) obj;
 						final Mode mode = pack.getMode();
@@ -85,8 +85,9 @@ public class Server {
 								objects = pack.getObjects();
 								if (objects.size() != 0) {
 									object = objects.get(0);
-									if (object != null && object.getClass() == Student.class) {
-										Student student = (Student)object;
+									if (object != null
+											&& object.getClass() == Student.class) {
+										final Student student = (Student) object;
 										model.addStudent(student);
 									}
 								}
@@ -95,8 +96,8 @@ public class Server {
 								System.out.println("currPage");
 								objects = pack.getObjects();
 								students = new Vector<Student>();
-								for (Object studObject : objects) {
-									Student student = (Student)studObject;
+								for (final Object studObject : objects) {
+									final Student student = (Student) studObject;
 									students.add(student);
 								}
 								model.deleteStudents(students);
@@ -124,10 +125,11 @@ public class Server {
 							break;
 							case GET_STUDENTS_COUNT:
 								System.out.println("getStudentsCount");
-								Integer studentsCount= model.getStudentsCount();
+								final Integer studentsCount = model.getStudentsCount();
 								objects = new Vector<Object>();
 								objects.add(studentsCount);
-								oos.writeObject(new Package(Mode.GET_STUDENTS_COUNT, objects));
+								oos.writeObject(new Package(Mode.GET_STUDENTS_COUNT,
+										objects));
 							break;
 							case GET_VIEWSIZE:
 								System.out.println("getViewSize");
@@ -135,6 +137,12 @@ public class Server {
 								objects = new Vector<Object>();
 								objects.add(viewSize);
 								oos.writeObject(new Package(Mode.GET_VIEWSIZE, objects));
+							break;
+							case GET_FILES_LIST:
+								System.out.println("getFileList");
+								objects = new Vector<Object>();
+								objects.addAll(Files.getObjects());
+								oos.writeObject(new Package(Mode.GET_FILES_LIST, objects));
 							break;
 							case LEAF_NEXT_PAGE:
 								System.out.println("leafNext");
@@ -145,8 +153,27 @@ public class Server {
 								model.leafPrev();
 							break;
 							case OPEN_FILE:
+								System.out.println("openFile");
+								object = pack.getObjects().get(0);
+								if (object != null && object.getClass() == String.class) {
+									String fileName = (String) object;
+									System.out.println("File == " + fileName);
+									fileName = Files.getAddress(fileName);
+									if (fileName != null) {
+										model.openXML(new File(fileName));
+									}
+								}
 							break;
 							case SAVE_FILE:
+								System.out.println("saveFile");
+								object = pack.getObjects().get(0);
+								if (object != null && object.getClass() == String.class) {
+									final String fileName = (String) object;
+									final String path = "c:" + File.separator + fileName;
+									System.out.println("File == " + path);
+									model.saveXML(new File(path));
+									Files.addFile(fileName, path);
+								}
 							break;
 							case SEARCH1:
 								name = "";
@@ -154,15 +181,15 @@ public class Server {
 								topStr = "";
 								object = pack.getObjects().get(0);
 								if (object != null && object.getClass() == String.class) {
-									name = (String)object;
+									name = (String) object;
 								}
 								object = pack.getObjects().get(1);
 								if (object != null && object.getClass() == String.class) {
-									botStr = (String)object;
+									botStr = (String) object;
 								}
 								object = pack.getObjects().get(2);
 								if (object != null && object.getClass() == String.class) {
-									topStr = (String)object;
+									topStr = (String) object;
 								}
 								students = model.search(name, botStr, topStr);
 								objects = new ArrayList<Object>();
@@ -174,11 +201,11 @@ public class Server {
 								group = null;
 								object = pack.getObjects().get(0);
 								if (object != null && object.getClass() == String.class) {
-									name = (String)object;
+									name = (String) object;
 								}
 								object = pack.getObjects().get(1);
 								if (object != null && object.getClass() == Integer.class) {
-									group = (Integer)object;
+									group = (Integer) object;
 								}
 								students = model.search(name, group);
 								objects = new ArrayList<Object>();
@@ -192,19 +219,19 @@ public class Server {
 								String examStr = "";
 								object = pack.getObjects().get(0);
 								if (object != null && object.getClass() == String.class) {
-									name = (String)object;
+									name = (String) object;
 								}
 								object = pack.getObjects().get(1);
 								if (object != null && object.getClass() == String.class) {
-									examStr = (String)object;
+									examStr = (String) object;
 								}
 								object = pack.getObjects().get(2);
 								if (object != null && object.getClass() == String.class) {
-									botStr = (String)object;
+									botStr = (String) object;
 								}
 								object = pack.getObjects().get(3);
 								if (object != null && object.getClass() == String.class) {
-									topStr = (String)object;
+									topStr = (String) object;
 								}
 								students = model.search(name, examStr, botStr, topStr);
 								objects = new ArrayList<Object>();
@@ -216,13 +243,15 @@ public class Server {
 								objects = pack.getObjects();
 								if (objects.size() != 0) {
 									object = objects.get(0);
-									if (object != null && object.getClass() == Integer.class) {
-										viewSize = (Integer)object;
+									if (object != null
+											&& object.getClass() == Integer.class) {
+										viewSize = (Integer) object;
 										model.setViewSize(viewSize);
 									}
 								}
 							break;
-
+							default:
+							break;
 						}
 					}
 

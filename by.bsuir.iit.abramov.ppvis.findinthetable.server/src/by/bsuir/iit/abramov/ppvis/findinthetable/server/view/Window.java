@@ -1,30 +1,21 @@
 package by.bsuir.iit.abramov.ppvis.findinthetable.server.view;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.List;
-import java.util.Locale;
-import java.util.ResourceBundle;
-
 import javax.swing.JFrame;
 
-import by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server;
-
 public class Window extends JFrame {
-	public static final int			defaultX		= 200;
-	public static final int			defaultY		= 100;
-	public static final int			defaultWidth	= 995;
-	public static final int			defaultHeight	= 600;
-	public static final String		TITLE			= "title";
+	public static final int		defaultX		= 200;
+	public static final int		defaultY		= 100;
+	public static final int		defaultWidth	= 995;
+	public static final int		defaultHeight	= 600;
+	public static final String	TITLE			= "title";
 
+	private ContentPane			contentPane;
 
-	private ContentPane	contentPane;
 	public Window() {
 
 		super(Window.TITLE);
 		initialize();
-		
+
 	}
 
 	public Window(final String title) {

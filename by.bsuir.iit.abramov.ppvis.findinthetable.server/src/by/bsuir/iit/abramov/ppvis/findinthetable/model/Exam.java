@@ -5,8 +5,8 @@ import java.io.Serializable;
 public class Exam implements Serializable {
 
 	private static final long	serialVersionUID	= 1L;
-	private final String	name;
-	private final Integer	mark;
+	private final String		name;
+	private final Integer		mark;
 
 	public Exam(final String name, final Integer mark) {
 

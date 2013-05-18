@@ -23,7 +23,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Text;
 
 import by.bsuir.iit.abramov.ppvis.findinthetable.server.view.Desktop;
-import by.bsuir.iit.abramov.ppvis.findinthetable.server.view.Window;
 
 public class XMLWriter {
 	private static Logger	LOG	= Logger.getLogger(Desktop.class.getName());
@@ -59,10 +58,8 @@ public class XMLWriter {
 			}
 			doc.appendChild(root);
 		} catch (final Exception e) {
-			XMLWriter.LOG
-					.log(Level.SEVERE,
-							Model.PROBLEM_PARSING_THE_FILE
-									+ e.getMessage(), e);
+			XMLWriter.LOG.log(Level.SEVERE,
+					Model.PROBLEM_PARSING_THE_FILE + e.getMessage(), e);
 		}
 		return doc;
 	}
@@ -85,8 +82,7 @@ public class XMLWriter {
 		if (doc != null) {
 			writeToFile(file.getPath(), doc);
 		} else {
-			JOptionPane.showMessageDialog(null,
-					Model.ERROR_ERROR_IN_CREATING_DOC);
+			JOptionPane.showMessageDialog(null, Model.ERROR_ERROR_IN_CREATING_DOC);
 			XMLWriter.LOG.info(Model.ERROR_ERROR_IN_CREATING_DOC);
 		}
 

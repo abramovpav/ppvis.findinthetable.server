@@ -17,7 +17,6 @@ import org.w3c.dom.NodeList;
 
 import by.bsuir.iit.abramov.ppvis.findinthetable.server.util.Util;
 import by.bsuir.iit.abramov.ppvis.findinthetable.server.view.Desktop;
-import by.bsuir.iit.abramov.ppvis.findinthetable.server.view.Window;
 
 class XMLReader {
 
@@ -95,10 +94,8 @@ class XMLReader {
 			document = documentBuilder.parse(docFile);
 			return document;
 		} catch (Exception e) {
-			XMLReader.LOG.log(
-					Level.SEVERE,
-					XMLReader.PROBLEM_PARSING_THE_FILE
-							+ e.getMessage(), e);
+			XMLReader.LOG.log(Level.SEVERE,
+					XMLReader.PROBLEM_PARSING_THE_FILE + e.getMessage(), e);
 			e = null;
 			return null;
 		}
