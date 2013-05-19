@@ -1,6 +1,8 @@
 package by.bsuir.iit.abramov.ppvis.findinthetable.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -26,9 +28,21 @@ public class Files {
 		}
 	}
 
+	public static List<Object> getObjectKeys() {
+
+		final List<Object> strings = new ArrayList<Object>();
+		strings.addAll(Files.files.keySet());
+		return strings;
+	}
+
 	public static Set<String> getObjects() {
 
 		return Files.files.keySet();
+	}
+
+	public static int size() {
+
+		return Files.files.size();
 	}
 
 }

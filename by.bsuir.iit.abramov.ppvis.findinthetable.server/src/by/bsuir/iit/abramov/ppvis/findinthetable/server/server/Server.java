@@ -9,7 +9,7 @@ import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
+import java.util.logging.Logger;
 
 import by.bsuir.iit.abramov.ppvis.findinthetable.model.Files;
 import by.bsuir.iit.abramov.ppvis.findinthetable.model.Model;
@@ -18,8 +18,10 @@ import by.bsuir.iit.abramov.ppvis.findinthetable.utiilNetClasses.Mode;
 import by.bsuir.iit.abramov.ppvis.findinthetable.utiilNetClasses.Package;
 
 public class Server {
+	public static final String	DRIVE_C	= "c:";
 	private ServerSocketChannel	server;
 	private final Model			model;
+	private static Logger		LOG		= Logger.getLogger(Server.class.getName());
 
 	public Server() {
 
@@ -31,26 +33,69 @@ public class Server {
 		this.model = model;
 	}
 
+	private final Object getFirstElementIfClassEqualent(final Class inputClass,
+			final List<Object> objects) {
+
+		if (objects.size() != 0) {
+			final Object object = objects.get(0);
+			if (isObjectClassEqualent(object, inputClass)) {
+				return object;
+			}
+		}
+		return null;
+	}
+
+	private String getString(final List<Object> objects, final int num, String name) {
+
+		if (num >= 0 && num < objects.size()) {
+			final Object object = objects.get(num);
+			if (isObjectClassEqualent(objects, String.class)) {
+				name = (String) object;
+			}
+		}
+		return name;
+	}
+
+	private boolean isEqualentClasses(final Class class1, final Class class2) {
+
+		return class1 == class2;
+	}
+
+	private boolean isObjectClassEqualent(final Object object, final Class inputClass) {
+
+		return object != null && isEqualentClasses(object.getClass(), inputClass);
+	}
+
 	public void open() {
 
-		System.out.println("Sender Start");
 		try {
 			server = ServerSocketChannel.open();
+			print("Server: start");
 			server.configureBlocking(true);
 			final int port = 12345;
 			server.socket().bind(new InetSocketAddress(port));
+			print("Server: port " + port);
 		} catch (final IOException e) {
-			System.out.println("class Server. Unable to open port");
+			print("Server: Unable to open port");
+
 		}
+	}
+
+	private void print(final String text) {
+
+		Server.LOG.info(text);
+		System.out.println(text);
 	}
 
 	public void read() {
 
 		SocketChannel client;
 		try {
+			print("Server: waiting for connection...");
 			client = server.accept();
 		} catch (final IOException e) {
-			System.out.println("class Server. read. can't accept");
+			print("Server: can't accept");
+
 			return;
 		}
 
@@ -60,7 +105,7 @@ public class Server {
 			oos = new ObjectOutputStream(client.socket().getOutputStream());
 			ois = new ObjectInputStream(client.socket().getInputStream());
 		} catch (final IOException e) {
-			System.out.println("class Server.read. can't get streams");
+			print("Server: can't get streams");
 			return;
 		}
 
@@ -75,89 +120,89 @@ public class Server {
 			try {
 				obj = ois.readObject();
 				if (obj != null) {
-					if (obj.getClass() == Package.class) {
+					if (isEqualentClasses(obj.getClass(), Package.class)) {
 						final Package pack = (Package) obj;
 						final Mode mode = pack.getMode();
 						switch (mode) {
-
 							case ADD_STUDENT:
-								System.out.println("addStudent");
+								print("Client: addStudent");
 								objects = pack.getObjects();
-								if (objects.size() != 0) {
-									object = objects.get(0);
-									if (object != null
-											&& object.getClass() == Student.class) {
-										final Student student = (Student) object;
-										model.addStudent(student);
-									}
+								if ((object = getFirstElementIfClassEqualent(
+										Student.class, objects)) != null) {
+									final Student student = (Student) object;
+									model.addStudent(student);
+									print("Server: add  student " + student.getName());
 								}
 							break;
 							case DELETE_STUDENTS:
-								System.out.println("currPage");
+								print("Client: deleteStudents");
 								objects = pack.getObjects();
-								students = new Vector<Student>();
+								students = new ArrayList<Student>();
 								for (final Object studObject : objects) {
-									final Student student = (Student) studObject;
-									students.add(student);
+									if (isEqualentClasses(studObject.getClass(),
+											Student.class)) {
+										final Student student = (Student) studObject;
+										students.add(student);
+									}
 								}
 								model.deleteStudents(students);
+								print("Server: delete " + students.size() + " students");
 							break;
 							case GET_CURR_PAGE:
-								System.out.println("currPage");
+								print("Client: getCurrPage");
 								students = model.getCurrPageOfStudent();
-								objects = new Vector<Object>();
-								objects.addAll(students);
-								oos.writeObject(new Package(Mode.GET_CURR_PAGE, objects));
+								sendPackage(oos, Mode.GET_CURR_PAGE, students);
+								print("Server: send " + students.size() + " students");
 							break;
 							case GET_NEXT_PAGE:
-								System.out.println("nextPage");
+								print("Client: getNextPage");
 								students = model.getNextPageOfStudents();
-								objects = new Vector<Object>();
-								objects.addAll(students);
-								oos.writeObject(new Package(Mode.GET_NEXT_PAGE, objects));
+								sendPackage(oos, Mode.GET_NEXT_PAGE, students);
+								print("Server: send " + students.size() + " students");
+
 							break;
 							case GET_PREV_PAGE:
-								System.out.println("prevPage");
+								print("Client: getPrevPage");
 								students = model.getPrevPageOfStudents();
-								objects = new Vector<Object>();
-								objects.addAll(students);
-								oos.writeObject(new Package(Mode.GET_PREV_PAGE, objects));
+								sendPackage(oos, Mode.GET_PREV_PAGE, students);
+								print("Server: send " + students.size() + " students");
+
 							break;
 							case GET_STUDENTS_COUNT:
-								System.out.println("getStudentsCount");
+								print("Client: getStudentsCount");
 								final Integer studentsCount = model.getStudentsCount();
-								objects = new Vector<Object>();
-								objects.add(studentsCount);
-								oos.writeObject(new Package(Mode.GET_STUDENTS_COUNT,
-										objects));
+								sendPackage(oos, Mode.GET_STUDENTS_COUNT, studentsCount);
+								print("Server: studentsCount = " + studentsCount);
 							break;
 							case GET_VIEWSIZE:
-								System.out.println("getViewSize");
+								print("Client: getViewSize");
 								viewSize = model.getViewSize();
-								objects = new Vector<Object>();
-								objects.add(viewSize);
-								oos.writeObject(new Package(Mode.GET_VIEWSIZE, objects));
+								sendPackage(oos, Mode.GET_VIEWSIZE, viewSize);
+								print("Server: viewSize = " + viewSize);
 							break;
 							case GET_FILES_LIST:
-								System.out.println("getFileList");
-								objects = new Vector<Object>();
-								objects.addAll(Files.getObjects());
-								oos.writeObject(new Package(Mode.GET_FILES_LIST, objects));
+								print("Client: getFileList");
+								sendPackage(oos, Mode.GET_FILES_LIST,
+										Files.getObjectKeys());
+								print("Server: send " + Files.size() + " files");
 							break;
 							case LEAF_NEXT_PAGE:
-								System.out.println("leafNext");
+								print("Client: leafNext");
 								model.leafNext();
+								print("Server: leafNext");
 							break;
 							case LEAF_PREV_PAGE:
-								System.out.println("leafPrev");
+								print("Client: leafPrev");
 								model.leafPrev();
+								print("Server: leafPrev");
 							break;
 							case OPEN_FILE:
-								System.out.println("openFile");
-								object = pack.getObjects().get(0);
-								if (object != null && object.getClass() == String.class) {
+								print("Client: openFile");
+								objects = pack.getObjects();
+								if ((object = getFirstElementIfClassEqualent(
+										String.class, objects)) != null) {
 									String fileName = (String) object;
-									System.out.println("File == " + fileName);
+									print("Server: open path " + fileName);
 									fileName = Files.getAddress(fileName);
 									if (fileName != null) {
 										model.openXML(new File(fileName));
@@ -165,103 +210,97 @@ public class Server {
 								}
 							break;
 							case SAVE_FILE:
-								System.out.println("saveFile");
-								object = pack.getObjects().get(0);
-								if (object != null && object.getClass() == String.class) {
+								print("Client: saveFile");
+								objects = pack.getObjects();
+								if ((object = getFirstElementIfClassEqualent(
+										String.class, objects)) != null) {
 									final String fileName = (String) object;
-									final String path = "c:" + File.separator + fileName;
-									System.out.println("File == " + path);
+									final String path = Server.DRIVE_C + File.separator
+											+ fileName;
 									model.saveXML(new File(path));
+									print("Server: save to " + path);
 									Files.addFile(fileName, path);
 								}
 							break;
 							case SEARCH1:
-								name = "";
-								botStr = "";
-								topStr = "";
-								object = pack.getObjects().get(0);
-								if (object != null && object.getClass() == String.class) {
-									name = (String) object;
+								print("Client: search1");
+								name = botStr = topStr = "";
+								objects = pack.getObjects();
+								if (objects.size() != 0) {
+									name = getString(objects, 0, name);
+									botStr = getString(objects, 1, botStr);
+									topStr = getString(objects, 2, topStr);
+									students = model.search(name, botStr, topStr);
+									objects = new ArrayList<Object>();
+									objects.addAll(students);
+								} else {
+									objects = new ArrayList<Object>();
 								}
-								object = pack.getObjects().get(1);
-								if (object != null && object.getClass() == String.class) {
-									botStr = (String) object;
-								}
-								object = pack.getObjects().get(2);
-								if (object != null && object.getClass() == String.class) {
-									topStr = (String) object;
-								}
-								students = model.search(name, botStr, topStr);
-								objects = new ArrayList<Object>();
-								objects.addAll(students);
 								oos.writeObject(new Package(Mode.SEARCH1, objects));
+
 							break;
 							case SEARCH2:
+								print("Client: search2");
 								name = "";
 								group = null;
-								object = pack.getObjects().get(0);
-								if (object != null && object.getClass() == String.class) {
-									name = (String) object;
+								objects = pack.getObjects();
+								if (objects.size() != 0) {
+									name = getString(objects, 0, name);
+									object = pack.getObjects().get(1);
+									if (isObjectClassEqualent(object, Integer.class)) {
+										group = (Integer) object;
+									}
+									students = model.search(name, group);
+									objects = new ArrayList<Object>();
+									objects.addAll(students);
+								} else {
+									objects = new ArrayList<Object>();
 								}
-								object = pack.getObjects().get(1);
-								if (object != null && object.getClass() == Integer.class) {
-									group = (Integer) object;
-								}
-								students = model.search(name, group);
-								objects = new ArrayList<Object>();
-								objects.addAll(students);
 								oos.writeObject(new Package(Mode.SEARCH2, objects));
 							break;
 							case SEARCH3:
-								name = "";
-								botStr = "";
-								topStr = "";
+								print("Client: search3");
+								name = botStr = topStr = "";
 								String examStr = "";
-								object = pack.getObjects().get(0);
-								if (object != null && object.getClass() == String.class) {
-									name = (String) object;
+								objects = pack.getObjects();
+								if (objects.size() != 0) {
+									name = getString(objects, 0, name);
+									examStr = getString(objects, 1, examStr);
+									botStr = getString(objects, 2, botStr);
+									topStr = getString(objects, 3, topStr);
+									students = model
+											.search(name, examStr, botStr, topStr);
+									objects = new ArrayList<Object>();
+									objects.addAll(students);
+								} else {
+									objects = new ArrayList<Object>();
 								}
-								object = pack.getObjects().get(1);
-								if (object != null && object.getClass() == String.class) {
-									examStr = (String) object;
-								}
-								object = pack.getObjects().get(2);
-								if (object != null && object.getClass() == String.class) {
-									botStr = (String) object;
-								}
-								object = pack.getObjects().get(3);
-								if (object != null && object.getClass() == String.class) {
-									topStr = (String) object;
-								}
-								students = model.search(name, examStr, botStr, topStr);
-								objects = new ArrayList<Object>();
-								objects.addAll(students);
 								oos.writeObject(new Package(Mode.SEARCH3, objects));
 							break;
 							case SET_VIEWSIZE:
-								System.out.println("setViewSize");
+								print("Client: setViewSize");
 								objects = pack.getObjects();
-								if (objects.size() != 0) {
-									object = objects.get(0);
-									if (object != null
-											&& object.getClass() == Integer.class) {
-										viewSize = (Integer) object;
-										model.setViewSize(viewSize);
-									}
+								if ((object = getFirstElementIfClassEqualent(
+										Integer.class, objects)) != null) {
+									viewSize = (Integer) object;
+									model.setViewSize(viewSize);
+									print("Server: new viewSize = " + viewSize);
 								}
 							break;
 							default:
+								print("Client: unknown command");
 							break;
 						}
 					}
 
 				}
 			} catch (final IOException e) {
-				System.out.println("class Server. read. can't readObject");
+				print("Server: Connection lost");
 				break;
 			} catch (final ClassNotFoundException e) {
+				print("ClassnotFoundException*****");
 				e.printStackTrace();
-				System.out.println("class Server. read. can't readObject");
+				print("***************************");
 				break;
 			}
 		}
@@ -270,8 +309,25 @@ public class Server {
 			oos.close();
 			ois.close();
 		} catch (final IOException e) {
-			System.out.println("class Server.read. can't close stream");
+			print("Server: can't close streams");
 		}
 		read();
+	}
+
+	private void sendPackage(final ObjectOutputStream oos, final Mode inputMode,
+			final Integer num) throws IOException {
+
+		List<Object> objects;
+		objects = new ArrayList<Object>();
+		objects.add(num);
+		oos.writeObject(new Package(inputMode, objects));
+	}
+
+	private void sendPackage(final ObjectOutputStream oos, final Mode inputMode,
+			final List inputObjects) throws IOException {
+
+		final List<Object> objects = new ArrayList<Object>();
+		objects.addAll(inputObjects);
+		oos.writeObject(new Package(inputMode, objects));
 	}
 }

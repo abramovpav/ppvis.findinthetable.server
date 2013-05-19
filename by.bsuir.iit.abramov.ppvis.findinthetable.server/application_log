@@ -1,54 +1,60 @@
-18.05.2013 13:12:49 by.bsuir.iit.abramov.ppvis.findinthetable.model.XMLReader parseForDOM
-SEVERE: Problem parsing the file: D:\Documents\Coding\git\ppvis.findinthetable.server\by.bsuir.iit.abramov.ppvis.findinthetable.server\123.xml (Не удается найти указанный файл)
-java.io.FileNotFoundException: D:\Documents\Coding\git\ppvis.findinthetable.server\by.bsuir.iit.abramov.ppvis.findinthetable.server\123.xml (Не удается найти указанный файл)
-	at java.io.FileInputStream.open(Native Method)
-	at java.io.FileInputStream.<init>(FileInputStream.java:120)
-	at java.io.FileInputStream.<init>(FileInputStream.java:79)
-	at sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:70)
-	at sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:161)
-	at com.sun.org.apache.xerces.internal.impl.XMLEntityManager.setupCurrentEntity(XMLEntityManager.java:653)
-	at com.sun.org.apache.xerces.internal.impl.XMLVersionDetector.determineDocVersion(XMLVersionDetector.java:186)
-	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:772)
-	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:737)
-	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:119)
-	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:235)
-	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:284)
-	at javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:208)
-	at by.bsuir.iit.abramov.ppvis.findinthetable.model.XMLReader.parseForDOM(XMLReader.java:94)
-	at by.bsuir.iit.abramov.ppvis.findinthetable.model.XMLReader.openXML(XMLReader.java:30)
-	at by.bsuir.iit.abramov.ppvis.findinthetable.model.Model.openXML(Model.java:139)
-	at by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server.read(Server.java:163)
-	at by.bsuir.iit.abramov.ppvis.findinthetable.server.view.Desktop.initialize(Desktop.java:60)
-	at by.bsuir.iit.abramov.ppvis.findinthetable.server.view.Desktop.<init>(Desktop.java:36)
-	at by.bsuir.iit.abramov.ppvis.findinthetable.server.view.ContentPane.initialize(ContentPane.java:37)
-	at by.bsuir.iit.abramov.ppvis.findinthetable.server.view.ContentPane.<init>(ContentPane.java:20)
-	at by.bsuir.iit.abramov.ppvis.findinthetable.server.view.Window.initialize(Window.java:40)
-	at by.bsuir.iit.abramov.ppvis.findinthetable.server.view.Window.<init>(Window.java:17)
-	at by.bsuir.iit.abramov.ppvis.findinthetable.server.Start.main(Start.java:18)
-18.05.2013 13:12:58 by.bsuir.iit.abramov.ppvis.findinthetable.model.XMLReader parseForDOM
-SEVERE: Problem parsing the file: D:\Documents\Coding\git\ppvis.findinthetable.server\by.bsuir.iit.abramov.ppvis.findinthetable.server\students.xml (Не удается найти указанный файл)
-java.io.FileNotFoundException: D:\Documents\Coding\git\ppvis.findinthetable.server\by.bsuir.iit.abramov.ppvis.findinthetable.server\students.xml (Не удается найти указанный файл)
-	at java.io.FileInputStream.open(Native Method)
-	at java.io.FileInputStream.<init>(FileInputStream.java:120)
-	at java.io.FileInputStream.<init>(FileInputStream.java:79)
-	at sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:70)
-	at sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:161)
-	at com.sun.org.apache.xerces.internal.impl.XMLEntityManager.setupCurrentEntity(XMLEntityManager.java:653)
-	at com.sun.org.apache.xerces.internal.impl.XMLVersionDetector.determineDocVersion(XMLVersionDetector.java:186)
-	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:772)
-	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:737)
-	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:119)
-	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:235)
-	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:284)
-	at javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:208)
-	at by.bsuir.iit.abramov.ppvis.findinthetable.model.XMLReader.parseForDOM(XMLReader.java:94)
-	at by.bsuir.iit.abramov.ppvis.findinthetable.model.XMLReader.openXML(XMLReader.java:30)
-	at by.bsuir.iit.abramov.ppvis.findinthetable.model.Model.openXML(Model.java:139)
-	at by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server.read(Server.java:163)
-	at by.bsuir.iit.abramov.ppvis.findinthetable.server.view.Desktop.initialize(Desktop.java:60)
-	at by.bsuir.iit.abramov.ppvis.findinthetable.server.view.Desktop.<init>(Desktop.java:36)
-	at by.bsuir.iit.abramov.ppvis.findinthetable.server.view.ContentPane.initialize(ContentPane.java:37)
-	at by.bsuir.iit.abramov.ppvis.findinthetable.server.view.ContentPane.<init>(ContentPane.java:20)
-	at by.bsuir.iit.abramov.ppvis.findinthetable.server.view.Window.initialize(Window.java:40)
-	at by.bsuir.iit.abramov.ppvis.findinthetable.server.view.Window.<init>(Window.java:17)
-	at by.bsuir.iit.abramov.ppvis.findinthetable.server.Start.main(Start.java:18)
+19.05.2013 7:09:09 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: getStudentsCount
+19.05.2013 7:09:09 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: studentsCount = 4
+19.05.2013 7:09:09 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: getViewSize
+19.05.2013 7:09:09 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: viewSize = 2
+19.05.2013 7:09:10 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: getNextPage
+19.05.2013 7:09:10 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: send 2 students
+19.05.2013 7:09:10 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: getStudentsCount
+19.05.2013 7:09:10 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: studentsCount = 4
+19.05.2013 7:09:10 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: getViewSize
+19.05.2013 7:09:10 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: viewSize = 2
+19.05.2013 7:09:11 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: getNextPage
+19.05.2013 7:09:11 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: send 2 students
+19.05.2013 7:09:11 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: getStudentsCount
+19.05.2013 7:09:11 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: studentsCount = 4
+19.05.2013 7:09:11 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: getViewSize
+19.05.2013 7:09:11 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: viewSize = 2
+19.05.2013 7:09:11 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: getPrevPage
+19.05.2013 7:09:11 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: send 2 students
+19.05.2013 7:09:11 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: getStudentsCount
+19.05.2013 7:09:11 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: studentsCount = 4
+19.05.2013 7:09:11 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: getViewSize
+19.05.2013 7:09:11 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: viewSize = 2
+19.05.2013 7:09:12 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: getPrevPage
+19.05.2013 7:09:12 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: send 2 students
+19.05.2013 7:09:12 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: getStudentsCount
+19.05.2013 7:09:12 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: studentsCount = 4
+19.05.2013 7:09:12 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: getViewSize
+19.05.2013 7:09:12 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: viewSize = 2
+19.05.2013 7:09:13 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: Connection lost
+19.05.2013 7:09:13 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: waiting for connection...
