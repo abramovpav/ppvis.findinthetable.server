@@ -1,60 +1,162 @@
-19.05.2013 7:09:09 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+20.05.2013 9:12:25 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: start
+20.05.2013 9:12:25 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: port 12345
+20.05.2013 9:12:25 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: waiting for connection...
+20.05.2013 9:12:30 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: getCurrPage
+20.05.2013 9:12:30 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: send 4 students
+20.05.2013 9:12:30 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
 INFO: Client: getStudentsCount
-19.05.2013 7:09:09 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+20.05.2013 9:12:30 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
 INFO: Server: studentsCount = 4
-19.05.2013 7:09:09 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+20.05.2013 9:12:30 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
 INFO: Client: getViewSize
-19.05.2013 7:09:09 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
-INFO: Server: viewSize = 2
-19.05.2013 7:09:10 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
-INFO: Client: getNextPage
-19.05.2013 7:09:10 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
-INFO: Server: send 2 students
-19.05.2013 7:09:10 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+20.05.2013 9:12:30 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: viewSize = 10
+20.05.2013 9:12:31 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: getFileList
+20.05.2013 9:12:31 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: send 3 files
+20.05.2013 9:12:33 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: openFile
+20.05.2013 9:12:33 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: open path text.xml
+20.05.2013 9:12:33 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: getCurrPage
+20.05.2013 9:12:33 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: send 10 students
+20.05.2013 9:12:33 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
 INFO: Client: getStudentsCount
-19.05.2013 7:09:10 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
-INFO: Server: studentsCount = 4
-19.05.2013 7:09:10 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+20.05.2013 9:12:33 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: studentsCount = 100
+20.05.2013 9:12:33 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
 INFO: Client: getViewSize
-19.05.2013 7:09:10 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
-INFO: Server: viewSize = 2
-19.05.2013 7:09:11 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
-INFO: Client: getNextPage
-19.05.2013 7:09:11 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
-INFO: Server: send 2 students
-19.05.2013 7:09:11 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+20.05.2013 9:12:33 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: viewSize = 10
+20.05.2013 9:12:36 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: getViewSize
+20.05.2013 9:12:36 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: viewSize = 10
+20.05.2013 9:12:36 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: setViewSize
+20.05.2013 9:12:36 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: new viewSize = 11
+20.05.2013 9:12:36 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: getCurrPage
+20.05.2013 9:12:36 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: send 11 students
+20.05.2013 9:12:36 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
 INFO: Client: getStudentsCount
-19.05.2013 7:09:11 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
-INFO: Server: studentsCount = 4
-19.05.2013 7:09:11 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+20.05.2013 9:12:36 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: studentsCount = 100
+20.05.2013 9:12:36 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
 INFO: Client: getViewSize
-19.05.2013 7:09:11 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
-INFO: Server: viewSize = 2
-19.05.2013 7:09:11 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
-INFO: Client: getPrevPage
-19.05.2013 7:09:11 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
-INFO: Server: send 2 students
-19.05.2013 7:09:11 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+20.05.2013 9:12:36 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: viewSize = 11
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: getViewSize
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: viewSize = 11
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: setViewSize
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: new viewSize = 12
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: getCurrPage
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: send 12 students
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
 INFO: Client: getStudentsCount
-19.05.2013 7:09:11 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
-INFO: Server: studentsCount = 4
-19.05.2013 7:09:11 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: studentsCount = 100
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
 INFO: Client: getViewSize
-19.05.2013 7:09:11 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
-INFO: Server: viewSize = 2
-19.05.2013 7:09:12 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
-INFO: Client: getPrevPage
-19.05.2013 7:09:12 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
-INFO: Server: send 2 students
-19.05.2013 7:09:12 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: viewSize = 12
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: getViewSize
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: viewSize = 12
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: setViewSize
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: new viewSize = 13
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: getCurrPage
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: send 13 students
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
 INFO: Client: getStudentsCount
-19.05.2013 7:09:12 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
-INFO: Server: studentsCount = 4
-19.05.2013 7:09:12 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: studentsCount = 100
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
 INFO: Client: getViewSize
-19.05.2013 7:09:12 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
-INFO: Server: viewSize = 2
-19.05.2013 7:09:13 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: viewSize = 13
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: getViewSize
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: viewSize = 13
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: setViewSize
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: new viewSize = 14
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: getCurrPage
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: send 14 students
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: getStudentsCount
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: studentsCount = 100
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: getViewSize
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: viewSize = 14
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: getViewSize
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: viewSize = 14
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: setViewSize
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: new viewSize = 15
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: getCurrPage
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: send 15 students
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: getStudentsCount
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: studentsCount = 100
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: getViewSize
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: viewSize = 15
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: getViewSize
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: viewSize = 15
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: setViewSize
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: new viewSize = 16
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: getCurrPage
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: send 16 students
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: getStudentsCount
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: studentsCount = 100
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Client: getViewSize
+20.05.2013 9:12:37 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+INFO: Server: viewSize = 16
+20.05.2013 9:12:38 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
 INFO: Server: Connection lost
-19.05.2013 7:09:13 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
+20.05.2013 9:12:38 by.bsuir.iit.abramov.ppvis.findinthetable.server.server.Server print
 INFO: Server: waiting for connection...

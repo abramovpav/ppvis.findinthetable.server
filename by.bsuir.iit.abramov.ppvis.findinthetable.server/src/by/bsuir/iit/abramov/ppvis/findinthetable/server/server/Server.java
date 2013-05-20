@@ -18,7 +18,7 @@ import by.bsuir.iit.abramov.ppvis.findinthetable.utiilNetClasses.Mode;
 import by.bsuir.iit.abramov.ppvis.findinthetable.utiilNetClasses.Package;
 
 public class Server {
-	public static final String	DRIVE_C	= "c:";
+	public static final String	DRIVE_C	= "d:" + File.separator + "WORK";
 	private ServerSocketChannel	server;
 	private final Model			model;
 	private static Logger		LOG		= Logger.getLogger(Server.class.getName());

@@ -20,6 +20,43 @@ public class Student implements Serializable {
 		}
 	}
 
+	@Override
+	public boolean equals(final Object obj) {
+
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		final Student other = (Student) obj;
+		if (exams == null) {
+			if (other.exams != null) {
+				return false;
+			}
+		} else if (!exams.equals(other.exams)) {
+			return false;
+		}
+		if (group == null) {
+			if (other.group != null) {
+				return false;
+			}
+		} else if (!group.equals(other.group)) {
+			return false;
+		}
+		if (name == null) {
+			if (other.name != null) {
+				return false;
+			}
+		} else if (!name.equals(other.name)) {
+			return false;
+		}
+		return true;
+	}
+
 	public double getAverageMark() {
 
 		double result = 0;
@@ -52,6 +89,17 @@ public class Student implements Serializable {
 	public final String getName() {
 
 		return name;
+	}
+
+	@Override
+	public int hashCode() {
+
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((exams == null) ? 0 : exams.hashCode());
+		result = prime * result + ((group == null) ? 0 : group.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
 	}
 
 	public double isExam(final String examName) {

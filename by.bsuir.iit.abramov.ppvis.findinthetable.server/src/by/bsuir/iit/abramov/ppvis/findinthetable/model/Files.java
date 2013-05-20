@@ -12,6 +12,7 @@ public class Files {
 	static {
 		Files.files.put("students.xml", "c:\\students.xml");
 		Files.files.put("123.xml", "c:\\123.xml");
+		Files.files.put("text.xml", "c:\\text.xml");
 	}
 
 	public static void addFile(final String key, final String value) {
